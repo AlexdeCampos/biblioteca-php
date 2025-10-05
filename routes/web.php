@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Author\AuthorController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +14,12 @@ Route::prefix('usuarios')->group(function () {
     Route::get('{user}', [UserController::class, 'show']);
     Route::post('{user?}', [UserController::class, 'save']);
     Route::delete('{user}', [UserController::class, 'destroy']);
+});
+
+Route::prefix('autores')->group(function () {
+    Route::get('', [AuthorController::class, 'index']);
+    Route::get('{author}', [AuthorController::class, 'show']);
+    Route::post('{author?}', [AuthorController::class, 'save']);
+    Route::delete('{author}', [AuthorController::class, 'destroy']);
 });
 
