@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Author\AuthorController;
+use App\Http\Controllers\Book\BookController;
 use App\Http\Controllers\Publisher\PublisherController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,9 @@ Route::prefix('editoras')->group(function () {
     Route::delete('{publisher}', [PublisherController::class, 'destroy']);
 });
 
+Route::prefix('livros')->group(function () {
+    Route::get('', [BookController::class, 'index']);
+    Route::get('{book}', [BookController::class, 'show']);
+    Route::post('{book?}', [BookController::class, 'save']);
+    Route::delete('{book}', [BookController::class, 'destroy']);
+});
