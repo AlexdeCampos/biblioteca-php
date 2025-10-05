@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Author\AuthorController;
+use App\Http\Controllers\Publisher\PublisherController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,12 @@ Route::prefix('autores')->group(function () {
     Route::get('{author}', [AuthorController::class, 'show']);
     Route::post('{author?}', [AuthorController::class, 'save']);
     Route::delete('{author}', [AuthorController::class, 'destroy']);
+});
+
+Route::prefix('editoras')->group(function () {
+    Route::get('', [PublisherController::class, 'index']);
+    Route::get('{publisher}', [PublisherController::class, 'show']);
+    Route::post('{publisher?}', [PublisherController::class, 'save']);
+    Route::delete('{publisher}', [PublisherController::class, 'destroy']);
 });
 
